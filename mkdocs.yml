@@ -1,0 +1,7 @@
+site_name: GNM Blog
+
+theme:
+  name: material
+
+extra:
+  generator: false
