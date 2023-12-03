@@ -1,3 +1,7 @@
+---
+description: How to set up a static IP and port exposure using OpenVPN on Linux
+---
+
 # Setting Up a Home Server: Static IP and Port Exposure with OpenVPN on Linux
 
 Have you ever wished to run your own email server from the comfort of your home but were held back by the need for a
