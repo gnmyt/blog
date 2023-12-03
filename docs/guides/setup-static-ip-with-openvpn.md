@@ -134,12 +134,12 @@ PORT=<port>; sudo iptables -t nat -d $STATIC_IP -A PREROUTING -p udp --dport $PO
 
 ### :earth_africa: Exposing a range of TCP ports
 ``` bash
-sudo START_PORT=<start-port> END_PORT=<end-port>; sudo iptables -t nat -d $STATIC_IP -A PREROUTING -p tcp --dport $START_PORT:$END_PORT -j DNAT --to-destination $HOME_IP:$START_PORT-$END_PORT
+START_PORT=<start-port> END_PORT=<end-port>; sudo iptables -t nat -d $STATIC_IP -A PREROUTING -p tcp --dport $START_PORT:$END_PORT -j DNAT --to-destination $HOME_IP:$START_PORT-$END_PORT
 ```
 
 ### :earth_africa: Exposing a range of UDP ports
 ``` bash
-sudo START_PORT=<start-port> END_PORT=<end-port>; sudo iptables -t nat -d $STATIC_IP -A PREROUTING -p udp --dport $START_PORT:$END_PORT -j DNAT --to-destination $HOME_IP:$START_PORT-$END_PORT
+START_PORT=<start-port> END_PORT=<end-port>; sudo iptables -t nat -d $STATIC_IP -A PREROUTING -p udp --dport $START_PORT:$END_PORT -j DNAT --to-destination $HOME_IP:$START_PORT-$END_PORT
 ```
 
 ### :information_source: Example: Exposing a web server on port 80
