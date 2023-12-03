@@ -1,7 +1,45 @@
 site_name: GNM Blog
+site_url: https://blog.gnmyt.dev
+site_description: A blog about programming, technology and more.
+site_author: Mathias Wagner
+copyright: Copyright &copy; 2023 Mathias Wagner
+
+repo_name: Blog
+repo_url: https://github.com/gnmyt/blog
+edit_uri: https://github.com/gnmyt/blog/edit/main/docs
+
+plugins:
+  - blog
 
 theme:
   name: material
+  features:
+    - toc.integrate
+    - content.code.annotate
+    - content.code.copy
+    - navigation.tabs
+  palette:
+    - scheme: default
+      primary: purple
+      accent: deep-purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      accent: blue-grey
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra:
   generator: false
