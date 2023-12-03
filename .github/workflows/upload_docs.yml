@@ -1,0 +1,19 @@
+name: Deploy documentation to GitHub
+on:
+  push:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: pip install mkdocs-material
+
+      - name: Deploy documentation
+        run: mkdocs gh-deploy --force
