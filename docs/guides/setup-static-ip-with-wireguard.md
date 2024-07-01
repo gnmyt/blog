@@ -9,8 +9,8 @@ reliable static IP? There is a solution! Whether it's hosting a personal website
 specialized application, this guide will show you how to set up a static IP and port exposure using Wireguard on Linux.
 
 !!! info "What if I already have a static IP?"
-This guide is intended for users that don't have a static IP address at home and want to expose a service on their
-home network to the internet. If you already have a static IP address, you may not need this guide.
+    If you already have a static IP address, you may not need this guide. However, you can still use WireGuard to
+    secure your connection and hide your home IP address from the internet.
 
 ## Prerequisites
 
@@ -37,17 +37,17 @@ graph LR
 This process is fairly straightforward. We will be using WireGuard to set up the VPN server.
 
 1. SSH into your hosted Linux server
-2. Install WireGuard
-    ``` bash
+2. Install WireGuard  
+   ```bash
    sudo apt update && sudo apt install wireguard -y
-    ```
-3. Generate server and client keys
-    ``` bash
+   ```
+3. Generate server and client keys  
+   ``` bash
    umask 077; wg genkey | tee server_private_key | wg pubkey > server_public_key
    umask 077; wg genkey | tee client_private_key | wg pubkey > client_public_key
-    ```
-4. Configure the WireGuard server
-   Create the configuration file `/etc/wireguard/wg0.conf` with the following content:
+   ```
+4. Configure the WireGuard server  
+   Create the configuration file `/etc/wireguard/wg0.conf` with the following content:  
    ```ini
    [Interface]
    PrivateKey = <server_private_key>
@@ -58,23 +58,23 @@ This process is fairly straightforward. We will be using WireGuard to set up the
    PublicKey = <client_public_key>
    AllowedIPs = 12.0.0.2/32
    ```
-5. Start the WireGuard server
-    ``` bash
+5. Start the WireGuard server  
+    ```bash
     sudo wg-quick up wg0
     ```
-6. Enable WireGuard to start on boot
+6. Enable WireGuard to start on boot  
     ``` bash
     sudo systemctl enable wg-quick@wg0
     ```
 
 ## :computer: Setting up the VPN Client
 
-1. SSH into your home Linux server and install WireGuard:
+1. SSH into your home Linux server and install WireGuard:  
     ``` bash
     sudo apt update && sudo apt install wireguard -y
     ```
-2. Configure the WireGuard client
-   Create the configuration file `/etc/wireguard/wg0.conf` with the following content:
+2. Configure the WireGuard client  
+   Create the configuration file `/etc/wireguard/wg0.conf` with the following content:  
    ```ini
    [Interface]
    PrivateKey = <client_private_key>
@@ -85,16 +85,16 @@ This process is fairly straightforward. We will be using WireGuard to set up the
    Endpoint = <hosted-server-ip>:51820
    AllowedIPs = 0.0.0.0/0
    ```
-3. Start the WireGuard client:
-    ``` bash
-   sudo wg-quick up wg0
+3. Start the WireGuard client:  
+    ```bash
+    sudo wg-quick up wg0
     ```
-4. Enable WireGuard to start on boot
-    ``` bash
+4. Enable WireGuard to start on boot  
+    ```bash
     sudo systemctl enable wg-quick@wg0
     ```
-5. Check your public IP address:
-    ``` bash
+5. Check your public IP address:  
+    ```bash
     curl ifconfig.me
     ```
    You should see the IP address of your hosted Linux server. This means that your home Linux server is now connected
