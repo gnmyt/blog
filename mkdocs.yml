@@ -54,4 +54,5 @@ nav:
       - index.md
       - Guides:
         - Setup static IP with OpenVPN: guides/setup-static-ip-with-openvpn.md
+        - Setup static IP with WireGuard: guides/setup-static-ip-with-wireguard.md
   - News: blog/index.md
